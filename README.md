@@ -1,3 +1,49 @@
+# digdag-operator-param
+[![Jitpack](https://jitpack.io/v/pro.civitaspo/digdag-operator-param.svg)](https://jitpack.io/#pro.civitaspo/digdag-operator-param) [![CircleCI](https://circleci.com/gh/civitaspo/digdag-operator-param.svg?style=shield)](https://circleci.com/gh/civitaspo/digdag-operator-param) [![Digdag](https://img.shields.io/badge/digdag-v0.9.27-brightgreen.svg)](https://github.com/treasure-data/digdag/releases/tag/v0.9.28)
+
+digdag plugin just for resetting params.
+
+
+# Overview
+
+- Plugin type: operator
+
+# Usage
+
+```yaml
+
+_export:
+  plugin:
+    repositories:
+      - https://jitpack.io
+    dependencies:
+      - pro.civitaspo:digdag-operator-param:0.0.1
+
++store:
+  param.store>:
+    hoge: fuga
+    hogo: '1'
+
++show1:
+  echo>: "${hoge} ${typeof(hogo)}"
+
++cast:
+  param.cast>:
+    hogo: integer
+
++show2:
+  echo>: "${hoge} ${typeof(hogo)}"
+
++reset:
+  param.reset>: hoge
+
++show-if-exists:
+  echo>: "${typeof(hoge) == 'undefined' ? 'None' : hoge}"
+
+```
+
+
+
 # digdag-plugin-example
 [![Jitpack](https://jitpack.io/v/myui/digdag-plugin-example.svg)](https://jitpack.io/#myui/digdag-plugin-example) [![Digdag](https://img.shields.io/badge/digdag-v0.9.12-brightgreen.svg)](https://github.com/treasure-data/digdag/releases/tag/v0.9.12)
 
