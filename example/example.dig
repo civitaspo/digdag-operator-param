@@ -4,7 +4,7 @@ _export:
       - file://${repos}
       # - https://jitpack.io
     dependencies:
-      - pro.civitaspo:digdag-operator-reset_params:0.0.1
+      - pro.civitaspo:digdag-operator-param:0.0.1
 
 +step1:
   example>: template.txt
