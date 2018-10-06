@@ -17,8 +17,8 @@ object ParamPlugin {
 
     override def get(): JList[OperatorFactory] = {
       JArrays.asList(
-        operatorFactory("param.reset", classOf[ParamResetOperator]),
-        operatorFactory("param.store", classOf[ParamStoreOperator])
+        operatorFactory("param_reset", classOf[ParamResetOperator]),
+        operatorFactory("param_store", classOf[ParamStoreOperator])
       )
     }
 

@@ -23,14 +23,14 @@ _export:
   echo>: "${typeof(hoge) == 'undefined' ? 'None' : hoge}"
 
 +store:
-  param.store>:
+  param_store>:
     hoge: fuga
 
 +show2:
   echo>: "${hoge}"
 
 +reset:
-  param.reset>: hoge
+  param_reset>: hoge
 
 +show3:
   echo>: "${typeof(hoge) == 'undefined' ? 'None' : hoge}"
@@ -39,17 +39,17 @@ _export:
 
 # Configuration
 
-## Configuration for `param.store>` operator
+## Configuration for `param_store>` operator
 
 ### Options
 
-- **param.store>**: Params to store. (string to object map, required)
+- **param_store>**: Params to store. (string to object map, required)
 
-## Configuration for `param.reset>` operator
+## Configuration for `param_reset>` operator
 
 ### Options
 
-- **param.reset>**: Param name to reset. (string, required)
+- **param_reset>**: Param name to reset. (string, required)
 
 # Development
 
