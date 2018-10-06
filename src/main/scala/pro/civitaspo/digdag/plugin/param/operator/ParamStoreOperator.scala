@@ -6,6 +6,8 @@ class ParamStoreOperator(operatorName: String, context: OperatorContext, systemC
   extends AbstractParamOperator(operatorName, context, systemConfig, templateEngine) {
 
   override def runTask(): TaskResult = {
+    val builder = TaskResult.defaultBuilder(request)
+    builder.storeParams(params.get("_command", classOf[Config]))
     TaskResult.empty(request)
   }
 
