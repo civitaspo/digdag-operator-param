@@ -1,0 +1,29 @@
+_export:
+  plugin:
+    repositories:
+      - file://${repos}
+      # - https://jitpack.io
+    dependencies:
+      - pro.civitaspo:digdag-operator-param:0.0.1
+
++show1:
+  echo>: "hoge: ${typeof(hoge) == 'undefined' ? 'None' : hoge}, a.b: ${typeof(a) == 'undefined' ? 'None' : typeof(a.b) == 'undefined' ? 'None' : a.b}"
+
++store:
+  param_store>:
+    hoge: fuga
+    a:
+      b: c
+
++show2:
+  echo>: "hoge: ${typeof(hoge) == 'undefined' ? 'None' : hoge}, a.b: ${typeof(a) == 'undefined' ? 'None' : typeof(a.b) == 'undefined' ? 'None' : a.b}"
+
++reset:
+  +hoge:
+    param_reset>: hoge
+  +a.b:
+    param_reset>: a.b
+
++show3:
+  echo>: "hoge: ${typeof(hoge) == 'undefined' ? 'None' : hoge}, a.b: ${typeof(a) == 'undefined' ? 'None' : typeof(a.b) == 'undefined' ? 'None' : a.b}"
+
