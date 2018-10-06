@@ -20,20 +20,25 @@ _export:
       - pro.civitaspo:digdag-operator-param:0.0.1
 
 +show1:
-  echo>: "${typeof(hoge) == 'undefined' ? 'None' : hoge}"
+  echo>: "hoge: ${typeof(hoge) == 'undefined' ? 'None' : hoge}, a.b: ${typeof(a) == 'undefined' ? 'None' : typeof(a.b) == 'undefined' ? 'None' : a.b}"
 
 +store:
   param_store>:
     hoge: fuga
+    a:
+      b: c
 
 +show2:
-  echo>: "${hoge}"
+  echo>: "hoge: ${typeof(hoge) == 'undefined' ? 'None' : hoge}, a.b: ${typeof(a) == 'undefined' ? 'None' : typeof(a.b) == 'undefined' ? 'None' : a.b}"
 
 +reset:
-  param_reset>: hoge
+  +hoge:
+    param_reset>: hoge
+  +a.b:
+    param_reset>: a.b
 
 +show3:
-  echo>: "${typeof(hoge) == 'undefined' ? 'None' : hoge}"
+  echo>: "hoge: ${typeof(hoge) == 'undefined' ? 'None' : hoge}, a.b: ${typeof(a) == 'undefined' ? 'None' : typeof(a.b) == 'undefined' ? 'None' : a.b}"
 
 ```
 
