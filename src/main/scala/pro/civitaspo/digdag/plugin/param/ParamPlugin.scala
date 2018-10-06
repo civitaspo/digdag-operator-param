@@ -6,7 +6,7 @@ import java.lang.reflect.Constructor
 import io.digdag.client.config.Config
 import io.digdag.spi.{Operator, OperatorContext, OperatorFactory, OperatorProvider, Plugin, TemplateEngine}
 import javax.inject.Inject
-import pro.civitaspo.digdag.plugin.param.operator.{AbstractParamOperator, ParamCastOperator, ParamResetOperator, ParamStoreOperator}
+import pro.civitaspo.digdag.plugin.param.operator.{AbstractParamOperator, ParamResetOperator, ParamStoreOperator}
 
 object ParamPlugin {
 
@@ -17,7 +17,6 @@ object ParamPlugin {
 
     override def get(): JList[OperatorFactory] = {
       JArrays.asList(
-        operatorFactory("param.cast", classOf[ParamCastOperator]),
         operatorFactory("param.reset", classOf[ParamResetOperator]),
         operatorFactory("param.store", classOf[ParamStoreOperator])
       )
