@@ -40,6 +40,47 @@ _export:
 +show3:
   echo>: "hoge: ${typeof(hoge) == 'undefined' ? 'None' : hoge}, a.b: ${typeof(a) == 'undefined' ? 'None' : typeof(a.b) == 'undefined' ? 'None' : a.b}"
 
++eval:
+  _export:
+    a: aaa
+    b: bbb
+    c: ccc
+    d: ${a}-${b}-${c}
+
+  +a:
+    _export:
+      e: ${d}
+      f:
+        g: ${d}
+        h:
+          - ${d}
+    +b:
+      echo>: ${d}
+    +c:
+      echo>: ${e}
+    +d:
+      echo>: ${f.g}
+    +e:
+      param_eval>: f.g
+    +f:
+      echo>: ${f.g}
+    +g:
+      +h:
+        for_each>: {i: "${f.h}"}
+        _do:
+          echo>: ${i}
+      +i:
+        echo>: ${f.h}
+    +j:
+      param_eval>: f.h
+    +k:
+      +l:
+        for_each>: {i: "${f.h}"}
+        _do:
+          echo>: ${i}
+      +m:
+        echo>: ${f.h}
+
 ```
 
 # Configuration
@@ -55,6 +96,13 @@ _export:
 ### Options
 
 - **param_reset>**: Param name to reset. (string, required)
+
+## Configuration for `param_eval>` operator
+
+### Options
+
+- **param_eval>**: Param name to eval. (string, required)
+  - **NOTE**: This operator is a workaround for the issue: [Exported vars are not evaluated recursively in the context of nested params](https://github.com/treasure-data/digdag/issues/862)
 
 # Development
 
