@@ -27,3 +27,34 @@ _export:
 +show3:
   echo>: "hoge: ${typeof(hoge) == 'undefined' ? 'None' : hoge}, a.b: ${typeof(a) == 'undefined' ? 'None' : typeof(a.b) == 'undefined' ? 'None' : a.b}"
 
++eval:
+  _export:
+    a: aaa
+    b: bbb
+    c: ccc
+    d: ${a}-${b}-${c}
+
+  +a:
+    _export:
+      e: ${d}
+      f:
+        g: ${d}
+        h:
+          - ${d}
+    +b:
+      echo>: ${d}
+    +c:
+      echo>: ${e}
+    +d:
+      echo>: ${f.g}
+    +e:
+      param_eval>: f.g
+    +f:
+      echo>: ${f.g}
+    +g:
+      echo>: ${f.h}
+    +h:
+      param_eval>: f.h
+    +i:
+      echo>: ${f.h}
+
