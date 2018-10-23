@@ -3,12 +3,15 @@ package pro.civitaspo.digdag.plugin.param
 import java.lang.reflect.Constructor
 import java.util.{Arrays => JArrays, List => JList}
 
-import io.digdag.spi.{Operator, OperatorContext, OperatorFactory, OperatorProvider, Plugin}
+import io.digdag.spi.{Operator, OperatorContext, OperatorFactory, OperatorProvider, Plugin, TemplateEngine}
+import javax.inject.Inject
 import pro.civitaspo.digdag.plugin.param.operator.{AbstractParamOperator, ParamResetOperator, ParamStoreOperator}
 
 object ParamPlugin {
 
   class AthenaOperatorProvider extends OperatorProvider {
+
+    @Inject protected var templateEngine: TemplateEngine = null
 
     override def get(): JList[OperatorFactory] = {
       JArrays.asList(operatorFactory("param_reset", classOf[ParamResetOperator]), operatorFactory("param_store", classOf[ParamStoreOperator]))
@@ -18,8 +21,8 @@ object ParamPlugin {
       new OperatorFactory {
         override def getType: String = operatorName
         override def newOperator(context: OperatorContext): Operator = {
-          val constructor: Constructor[T] = klass.getConstructor(classOf[String], classOf[OperatorContext])
-          constructor.newInstance(operatorName, context)
+          val constructor: Constructor[T] = klass.getConstructor(classOf[String], classOf[OperatorContext], classOf[TemplateEngine])
+          constructor.newInstance(operatorName, context, templateEngine)
         }
       }
     }

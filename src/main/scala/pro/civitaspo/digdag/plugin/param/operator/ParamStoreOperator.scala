@@ -1,9 +1,9 @@
 package pro.civitaspo.digdag.plugin.param.operator
 
 import io.digdag.client.config.Config
-import io.digdag.spi.{OperatorContext, TaskResult}
+import io.digdag.spi.{OperatorContext, TaskResult, TemplateEngine}
 
-class ParamStoreOperator(operatorName: String, context: OperatorContext) extends AbstractParamOperator(operatorName, context) {
+class ParamStoreOperator(operatorName: String, context: OperatorContext, templateEngine: TemplateEngine) extends AbstractParamOperator(operatorName, context, templateEngine) {
 
   protected val newParams: Config = params.get("_command", classOf[Config])
 
