@@ -56,6 +56,13 @@ _export:
 
 - **param_reset>**: Param name to reset. (string, required)
 
+## Configuration for `param_eval>` operator
+
+### Options
+
+- **param_eval>**: Param name to eval. (string, required)
+  - **NOTE**: This operator is a workaround for the issue: [Exported vars are not evaluated recursively in the context of nested params](https://github.com/treasure-data/digdag/issues/862)
+
 # Development
 
 ## Run an Example
