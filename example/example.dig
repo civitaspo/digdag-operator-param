@@ -52,9 +52,19 @@ _export:
     +f:
       echo>: ${f.g}
     +g:
-      echo>: ${f.h}
-    +h:
+      +h:
+        for_each>: {i: "${f.h}"}
+        _do:
+          echo>: ${i}
+      +i:
+        echo>: ${f.h}
+    +j:
       param_eval>: f.h
-    +i:
-      echo>: ${f.h}
+    +k:
+      +l:
+        for_each>: {i: "${f.h}"}
+        _do:
+          echo>: ${i}
+      +m:
+        echo>: ${f.h}
 
