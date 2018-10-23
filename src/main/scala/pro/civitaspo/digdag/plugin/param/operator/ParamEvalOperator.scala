@@ -20,9 +20,11 @@ class ParamEvalOperator(operatorName: String, context: OperatorContext, template
 
     if (parents.isEmpty) paramsToStore.set(child, evaluated.get(child, classOf[Object]))
     else {
-      val getter = parents.foldLeft(evaluated) { (nested: Config, k: String) => nested.getNested(k)
+      val getter = parents.foldLeft(evaluated) { (nested: Config, k: String) =>
+        nested.getNested(k)
       }
-      val setter = parents.foldLeft(paramsToStore) { (nested: Config, k: String) => nested.getNestedOrSetEmpty(k)
+      val setter = parents.foldLeft(paramsToStore) { (nested: Config, k: String) =>
+        nested.getNestedOrSetEmpty(k)
       }
       setter.set(child, getter.get(child, classOf[Object]))
     }
