@@ -36,13 +36,7 @@ class ParamEvalOperator(operatorName: String, context: OperatorContext, template
   }
 
   protected def eval(params: Config): Config = {
-    val tmpFile: String = workspace.createTempFile("param_eval", ".json")
-
-    val writer = workspace.newBufferedWriter(tmpFile, UTF_8)
-    try writer.write(params.toString)
-    finally writer.close()
-
-    val content = workspace.templateFile(templateEngine, tmpFile, UTF_8, params)
+    val content = templateEngine.template(params.toString, params)
     cf.fromJsonString(content)
   }
 }
