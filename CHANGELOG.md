@@ -2,6 +2,7 @@
 ==================
 
 * [#9](https://github.com/civitaspo/digdag-operator-param/pull/9) [Enhancement] Do not use a temporary file to use workspace.temlateFile, use templateEngine.tempale instead
+* [#12](https://github.com/civitaspo/digdag-operator-param/pull/12) [Enhancement] Use gha instead of circleci
 
 0.0.2 (2018-10-23)
 ==================
