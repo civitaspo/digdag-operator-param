@@ -9,8 +9,8 @@ group = 'pro.civitaspo'
 version = '0.0.3'
 
 def digdagVersion = '0.10.0'
-def scalaSemanticVersion = "2.12.6"
-def depScalaVersion = "2.12"
+def scalaSemanticVersion = "2.13.5"
+def depScalaVersion = "2.13"
 
 repositories {
     mavenCentral()
