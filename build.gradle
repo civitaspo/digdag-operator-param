@@ -1,7 +1,7 @@
 plugins {
     id 'scala'
     id 'maven-publish'
-    id 'com.github.johnrengelman.shadow' version '2.0.2'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
     id "com.diffplug.gradle.spotless" version "3.13.0"
 }
 
@@ -21,11 +21,11 @@ repositories {
 }
 
 dependencies {
-    compile group: 'io.digdag', name: 'digdag-spi', version: digdagVersion
-    compile group: 'io.digdag', name: 'digdag-plugin-utils', version: digdagVersion
+    implementation group: 'io.digdag', name: 'digdag-spi', version: digdagVersion
+    implementation group: 'io.digdag', name: 'digdag-plugin-utils', version: digdagVersion
 
     // https://mvnrepository.com/artifact/org.scala-lang/scala-library
-    compile group: 'org.scala-lang', name: 'scala-library', version: scalaSemanticVersion
+    implementation group: 'org.scala-lang', name: 'scala-library', version: scalaSemanticVersion
 }
 
 shadowJar {
