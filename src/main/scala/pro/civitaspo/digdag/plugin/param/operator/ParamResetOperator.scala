@@ -4,8 +4,11 @@ import com.google.common.collect.ImmutableList
 import io.digdag.client.config.ConfigKey
 import io.digdag.spi.{OperatorContext, TaskResult, TemplateEngine}
 
-class ParamResetOperator(operatorName: String, context: OperatorContext, templateEngine: TemplateEngine)
-    extends AbstractParamOperator(operatorName, context, templateEngine) {
+class ParamResetOperator(
+    operatorName: String,
+    context: OperatorContext,
+    templateEngine: TemplateEngine
+) extends AbstractParamOperator(operatorName, context, templateEngine) {
 
   protected val resetKey: String = params.get("_command", classOf[String])
 

@@ -108,7 +108,7 @@ _export:
 
 ## Run an Example
 
-### 1) build
+### build
 
 ```sh
 ./gradlew publish
@@ -116,16 +116,21 @@ _export:
 
 Artifacts are build on local repos: `./build/repo`.
 
-### 2) get your aws profile
-
-```sh
-aws configure
-```
-
-### 3) run an example
+### run an example
 
 ```sh
 ./example/run.sh
+```
+
+## Dependencies
+This project's dependencies are managed by the gradle [dependency locking feature](https://docs.gradle.org/current/userguide/dependency_locking.html).
+
+```shell
+# Update the dependencies
+./gradlew dependencies --write-locks
+
+# Update the paticular dependency
+./gradlew dependencies --update-locks org.junit.jupiter:junit-jupiter-api
 ```
 
 ## (TODO) Run Tests

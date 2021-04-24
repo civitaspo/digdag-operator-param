@@ -3,9 +3,21 @@ package pro.civitaspo.digdag.plugin.param
 import java.lang.reflect.Constructor
 import java.util.{Arrays => JArrays, List => JList}
 
-import io.digdag.spi.{Operator, OperatorContext, OperatorFactory, OperatorProvider, Plugin, TemplateEngine}
+import io.digdag.spi.{
+  Operator,
+  OperatorContext,
+  OperatorFactory,
+  OperatorProvider,
+  Plugin,
+  TemplateEngine
+}
 import javax.inject.Inject
-import pro.civitaspo.digdag.plugin.param.operator.{AbstractParamOperator, ParamEvalOperator, ParamResetOperator, ParamStoreOperator}
+import pro.civitaspo.digdag.plugin.param.operator.{
+  AbstractParamOperator,
+  ParamEvalOperator,
+  ParamResetOperator,
+  ParamStoreOperator
+}
 
 object ParamPlugin {
 
@@ -21,11 +33,18 @@ object ParamPlugin {
       )
     }
 
-    private def operatorFactory[T <: AbstractParamOperator](operatorName: String, klass: Class[T]): OperatorFactory = {
+    private def operatorFactory[T <: AbstractParamOperator](
+        operatorName: String,
+        klass: Class[T]
+    ): OperatorFactory = {
       new OperatorFactory {
         override def getType: String = operatorName
         override def newOperator(context: OperatorContext): Operator = {
-          val constructor: Constructor[T] = klass.getConstructor(classOf[String], classOf[OperatorContext], classOf[TemplateEngine])
+          val constructor: Constructor[T] = klass.getConstructor(
+            classOf[String],
+            classOf[OperatorContext],
+            classOf[TemplateEngine]
+          )
           constructor.newInstance(operatorName, context, templateEngine)
         }
       }
