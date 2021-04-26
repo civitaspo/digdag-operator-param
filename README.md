@@ -102,7 +102,10 @@ _export:
 ### Options
 
 - **param_eval>**: Param name to eval. (string, required)
-  - **NOTE**: This operator is a workaround for the issue: [Exported vars are not evaluated recursively in the context of nested params](https://github.com/treasure-data/digdag/issues/862)
+
+**NOTE**: 
+* This operator is a workaround for the issue: [Exported vars are not evaluated recursively in the context of nested params](https://github.com/treasure-data/digdag/issues/862)
+* Use single quote`'` instead of double quote`"` for injecting javascript code to avoide `SyntaxError: <function>: Missing close quote` error: [Fails param_eval>: when using custom variables in nested variables](https://github.com/civitaspo/digdag-operator-param/issues/14)
 
 # Development
 
